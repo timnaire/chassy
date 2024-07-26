@@ -1,8 +1,7 @@
 import { BaseLayout } from './layout/BaseLayout';
-import './App.scss';
+import './App.css';
 
-const App = () => {
+export function App() {
   return (<BaseLayout />);
 }
 
-export default App;

@@ -1,3 +1,3 @@
-export const Error = ({}) => {
-    return (<h1>404 page</h1>);
+export function Error() {
+  return (<h1>404 page</h1>);
 }

@@ -1,10 +1,8 @@
-import React from 'react';
-
 interface CarouselProps {
   images: string[];
 }
 
-export const Carousel: React.FC<CarouselProps> = ({ images }) => {
+export function Carousel({ images }: CarouselProps) {
 
   return (
     <div id="carouselExample" className="carousel slide">
