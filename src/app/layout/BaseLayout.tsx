@@ -8,16 +8,14 @@ export function BaseLayout() {
 
   return (
     <>
-      <div className="flex flex-col">
-        <div className={isHome ? 'bg-gradient-to-r from-white via-white to-fuchsia-100' : ''}>
-          <Header />
-          <main>
-            <Outlet />
-          </main>
-        </div>
-        <div id="caseContent"></div>
-        <Footer />
+      <div className={isHome ? 'bg-gradient-to-r from-white via-white to-fuchsia-100' : ''}>
+        <Header />
+        <main>
+          <Outlet />
+        </main>
       </div>
+      <div id="otherContent"></div>
+      <Footer />
     </>
   );
 }

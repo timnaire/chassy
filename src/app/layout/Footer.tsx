@@ -4,20 +4,20 @@ export function Footer() {
   return (
     <footer>
       <div className="container mx-auto">
-        <div className="flex justify-between">
-          <ul className="flex">
-            <li className="px-16 py-6">
-              <NavLink className="text-2xl" to={`/`}>
+        <div className="flex justify-center md:justify-between">
+          <ul className="hidden md:flex">
+            <li className="md:px-5 py-6">
+              <NavLink className="md:text-md lg:text-2xl" to={`/`}>
                 Home
               </NavLink>
             </li>
-            <li className="px-16 py-6">
-              <NavLink className="text-2xl" to={`/about`}>
+            <li className="md:px-5 py-6">
+              <NavLink className="md:text-md lg:text-2xl" to={`/about`}>
                 Case Studies
               </NavLink>
             </li>
-            <li className="px-16 py-6">
-              <NavLink className="text-2xl" to={`/about`}>
+            <li className="md:px-5 py-6">
+              <NavLink className="md:text-md lg:text-2xl" to={`/about`}>
                 About
               </NavLink>
             </li>
