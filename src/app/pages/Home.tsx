@@ -1,10 +1,14 @@
-import { Button, Portal } from "@mui/base";
-import { CaseStudy } from "./CaseStudy";
-import { useEffect, useRef, useState } from "react";
+
+import { useEffect, useRef, useState } from 'react';
+import { Button, Portal } from '@mui/base';
+import { CaseStudy } from './CaseStudy';
+import Typed from 'typed.js';
+import { Contact } from './Contact';
 
 export function Home() {
   const otherContent = useRef<HTMLElement | null>(null);
   const [isOtherContentReady, setIsOtherContentReady] = useState(false);
+  const el = useRef(null);
 
   useEffect(() => {
     if (!otherContent.current) {
@@ -14,6 +18,19 @@ export function Home() {
         setIsOtherContentReady(true);
       }
     }
+  }, []);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['simple', 'elegant', 'fast'],
+      typeSpeed: 120,
+      loop: true,
+      showCursor: false,
+    });
+
+    return () => {
+      typed.destroy();
+    };
   }, []);
 
   return (
@@ -29,7 +46,7 @@ export function Home() {
         </div>
 
         <h1 className="text-4xl md:text-7xl font-bold mt-16">
-          I design <span className="text-fuchsia-900">simple.</span>
+          I design <span ref={el} className="text-fuchsia-900">simple.</span>
         </h1>
 
         <Button className="bg-fuchsia-900 text-white px-5 md:px-10 py-3 font-bold text-sm md:text-xl rounded-full mt-32">
@@ -42,6 +59,9 @@ export function Home() {
       </div>
       {isOtherContentReady && (
         <Portal children={<CaseStudy />} container={otherContent.current} />
+      )}
+      {isOtherContentReady && (
+        <Portal children={<Contact />} container={otherContent.current} />
       )}
     </article>
   );

@@ -5,11 +5,10 @@ import Drawer from '../shared/components/Drawer';
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-
   return (
     <header>
       <div className="hidden md:flex flex justify-center">
-        <ul className="flex">
+        <ul className="flex font-medium">
           <li className="md:px-6 lg:px-16 py-6">
             <NavLink className={({ isActive }) => isActive ? 'text-2xl text-fuchsia-700' : 'text-2xl'} to={`/`}>
               Home
@@ -41,7 +40,7 @@ export function Header() {
         </div>
 
         <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
-          <ul>
+          <ul className="font-medium">
             <li className="pl-5 py-6">
               <NavLink className={({ isActive }) => isActive ? 'text-xl text-fuchsia-700' : 'text-2xl'} to={`/`} onClick={() => setIsOpen(false)}>
                 Home

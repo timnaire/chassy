@@ -4,11 +4,12 @@ import { Error } from './error/Error';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
+import { AnimatePresence } from 'framer-motion';
 
 
 export const AppRoutes = createBrowserRouter([
   {
-    element: <App />,
+    element: <AnimatePresence mode="wait"><App /></AnimatePresence>,
     children: [
       { path: "/", element: <Home /> },
       { path: "/about", element: <About /> },
