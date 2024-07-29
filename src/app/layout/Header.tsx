@@ -15,7 +15,7 @@ export function Header() {
             </NavLink>
           </li>
           <li className="md:px-6 lg:px-16 py-6">
-            <NavLink className={({ isActive }) => isActive ? 'text-2xl text-fuchsia-700' : 'text-2xl'} to={`/about`}>
+            <NavLink className={({ isActive }) => isActive ? 'text-2xl text-fuchsia-700' : 'text-2xl'} to={`/case-studies`}>
               Case Studies
             </NavLink>
           </li>
@@ -47,7 +47,7 @@ export function Header() {
               </NavLink>
             </li>
             <li className="pl-5 py-6">
-              <NavLink className={({ isActive }) => isActive ? 'text-xl text-fuchsia-700' : 'text-2xl'} to={`/about`} onClick={() => setIsOpen(false)}>
+              <NavLink className={({ isActive }) => isActive ? 'text-xl text-fuchsia-700' : 'text-2xl'} to={`/case-studies`} onClick={() => setIsOpen(false)}>
                 Case Studies
               </NavLink>
             </li>

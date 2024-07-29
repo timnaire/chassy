@@ -4,6 +4,7 @@ import { Button, Portal } from '@mui/base';
 import { CaseStudy } from './CaseStudy';
 import Typed from 'typed.js';
 import { Contact } from './Contact';
+import { LinkedIn } from '../shared/components/LinkedIn';
 
 export function Home() {
   const otherContent = useRef<HTMLElement | null>(null);
@@ -54,14 +55,14 @@ export function Home() {
         </Button>
 
         <div className="mt-64 text-xl">
-          Follow me in
+          Follow me <LinkedIn href="https://www.linkedin.com/in/charcae-donaire-26b7a0183/" />
         </div>
       </div>
       {isOtherContentReady && (
-        <Portal children={<CaseStudy />} container={otherContent.current} />
+        <Portal children={<CaseStudy showLinkedin={false} />} container={otherContent.current} />
       )}
       {isOtherContentReady && (
-        <Portal children={<Contact />} container={otherContent.current} />
+        <Portal children={<Contact showLinkedin={false} />} container={otherContent.current} />
       )}
     </article>
   );

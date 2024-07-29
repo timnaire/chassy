@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Tab, TabPanel, Tabs, TabsList } from '@mui/base';
 import { AppStudy } from '../shared/components/AppStudy';
 import { AppStudies } from '../core/models/constants';
+import { LinkedIn } from '../shared/components/LinkedIn';
 
-export function CaseStudy() {
+export function CaseStudy({ showLinkedin = true }) {
   const [selectedTab, setSelectedTab] = useState<number | string | null>(0);
   const mobileStudies = AppStudies.filter(study => study.isMobile);
   const webStudies = AppStudies.filter(study => !study.isMobile);
@@ -19,7 +20,7 @@ export function CaseStudy() {
   return (
     <article>
       <div className="container mx-auto">
-        <h2 className="flex justify-center mt-16 text-fuchsia-700 text-2xl sm:text-3xl md:text-4xl">
+        <h2 className="flex justify-center mt-16 text-fuchsia-700 text-2xl sm:text-3xl md:text-4xl font-medium">
           Case Studies
         </h2>
       </div>
@@ -56,6 +57,13 @@ export function CaseStudy() {
           </TabPanel>
         </div>
       </Tabs >
+
+      {showLinkedin && (<div className="container mx-auto">
+        <div className="mt-24 mb-12 text-xl">
+          Follow me <LinkedIn href="https://www.linkedin.com/in/charcae-donaire-26b7a0183/" />
+        </div>
+      </div>
+      )}
     </article>
   );
 }
