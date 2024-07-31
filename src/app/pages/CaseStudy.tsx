@@ -58,11 +58,12 @@ export function CaseStudy({ showLinkedin = true }) {
         </div>
       </Tabs >
 
-      {showLinkedin && (<div className="container mx-auto">
-        <div className="mt-24 mb-12 text-xl">
-          Follow me <LinkedIn href="https://www.linkedin.com/in/charcae-donaire-26b7a0183/" />
+      {showLinkedin && (
+        <div className="container px-6 md:mx-auto">
+          <div className="mt-24 mb-12 text-xl">
+            Follow me <LinkedIn href="https://www.linkedin.com/in/charcae-donaire-26b7a0183/" />
+          </div>
         </div>
-      </div>
       )}
     </article>
   );

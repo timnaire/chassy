@@ -5,6 +5,7 @@ import { CaseStudy } from './CaseStudy';
 import Typed from 'typed.js';
 import { Contact } from './Contact';
 import { LinkedIn } from '../shared/components/LinkedIn';
+import { motion } from 'framer-motion';
 
 export function Home() {
   const otherContent = useRef<HTMLElement | null>(null);
@@ -35,7 +36,11 @@ export function Home() {
   }, []);
 
   return (
-    <article className="container mx-auto px-5 md:px-0">
+    <motion.article
+      className="container mx-auto px-5 md:px-0"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { type: "spring", duration: 3 } }}
+    >
       <div>
         <div className="mt-12">
           <h5 className="text-xl md:text-2xl font-bold">
@@ -54,7 +59,7 @@ export function Home() {
           Check Case Studies
         </Button>
 
-        <div className="mt-64 text-xl">
+        <div className="mt-64 text-xl py-6">
           Follow me <LinkedIn href="https://www.linkedin.com/in/charcae-donaire-26b7a0183/" />
         </div>
       </div>
@@ -64,7 +69,7 @@ export function Home() {
       {isOtherContentReady && (
         <Portal children={<Contact showLinkedin={false} />} container={otherContent.current} />
       )}
-    </article>
+    </motion.article>
   );
 }
 

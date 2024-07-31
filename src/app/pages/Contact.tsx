@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { Button } from '@mui/base';
 import { LinkedIn } from '../shared/components/LinkedIn';
+import { motion } from 'framer-motion';
 
 export function Contact({ showLinkedin = true }) {
   const [form, setForm] = useState({ email: '', name: '', message: '' });
@@ -34,7 +35,11 @@ export function Contact({ showLinkedin = true }) {
   }
 
   return (
-    <article className="container mx-auto px-10 py-16">
+    <motion.article
+      className="container mx-auto px-10 py-16"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { type: "spring", duration: 3 } }}
+    >
       <div className="flex flex-col md:flex-row">
         <div className="flex-1">
           <div className="text-fuchsia-700 text-2xl sm:text-3xl md:text-4xl font-bold mb-3">
@@ -116,6 +121,6 @@ export function Contact({ showLinkedin = true }) {
           </div>
         </div>
       )}
-    </article>
+    </motion.article>
   );
 }
