@@ -8,6 +8,7 @@ export function Contact({ showLinkedin = true }) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append('form-name', 'contact');
     formData.append('email', form.email);
     formData.append('name', form.name);
     formData.append('message', form.message);
@@ -17,7 +18,14 @@ export function Contact({ showLinkedin = true }) {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData as any).toString(),
     })
-      .then(() => alert("Thank you for your submission"))
+      .then(() => {
+        alert("Thank you for your submission");
+        setForm({
+          email: '',
+          name: '',
+          message: ''
+        });
+      })
       .catch((error) => alert(error));
   }
 
@@ -50,6 +58,7 @@ export function Contact({ showLinkedin = true }) {
             <div className="text-xl font-medium mb-10">
               Drop me a message, and we can have a chat!
             </div>
+            <input type="hidden" name="form-name" value="contact" />
             <div className="mt-6">
               <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
                 Email <span className="text-zinc-400">(require)</span>
