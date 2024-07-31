@@ -7,8 +7,18 @@ export function Contact({ showLinkedin = true }) {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Submit form to email
-    console.log('submit', form);
+    const formData = new FormData();
+    formData.append('email', form.email);
+    formData.append('name', form.name);
+    formData.append('message', form.message);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData as any).toString(),
+    })
+      .then(() => alert("Thank you for your submission"))
+      .catch((error) => alert(error));
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
