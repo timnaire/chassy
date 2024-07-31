@@ -36,7 +36,7 @@ export function Contact({ showLinkedin = true }) {
         <div className="flex-none self-center text-2xl px-12 py-6">or</div>
 
         <div className="md:flex flex-1 md:justify-end font-normal">
-          <form noValidate autoComplete="off" onSubmit={(e) => handleSubmit(e)} className="md:w-11/12 lg:w-10/12">
+          <form noValidate autoComplete="off" name="contact" onSubmit={(e) => handleSubmit(e)} className="md:w-11/12 lg:w-10/12" method="POST" data-netlify="true">
             <div className="text-xl font-medium mb-10">
               Drop me a message, and we can have a chat!
             </div>
