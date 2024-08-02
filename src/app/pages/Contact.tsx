@@ -3,7 +3,7 @@ import { Button } from '@mui/base';
 import { LinkedIn } from '../shared/components/LinkedIn';
 import { motion } from 'framer-motion';
 
-export function Contact({ showLinkedin = true }) {
+export function Contact({ isPage = true }) {
   const [form, setForm] = useState({ email: '', name: '', message: '' });
   const linkedInUrl = 'https://www.linkedin.com/in/charcae-donaire-26b7a0183/';
 
@@ -37,7 +37,7 @@ export function Contact({ showLinkedin = true }) {
 
   return (
     <motion.article
-      className="container mx-auto px-10 py-16"
+      className={isPage ? "container mx-auto px-10 py-16 md:mt-72" : "container mx-auto px-10 py-16"}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { type: "spring", duration: 3 } }}
     >
@@ -115,7 +115,7 @@ export function Contact({ showLinkedin = true }) {
         </div>
       </div>
 
-      {showLinkedin && (
+      {isPage && (
         <div className="container mx-auto">
           <div className="mt-24 mb-12 text-xl">
             Follow me <LinkedIn url={linkedInUrl} />

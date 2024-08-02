@@ -5,7 +5,7 @@ import { AppStudies } from '../core/models/constants';
 import { LinkedIn } from '../shared/components/LinkedIn';
 import { motion } from 'framer-motion';
 
-export function CaseStudy({ showLinkedin = true }) {
+export function CaseStudy({ isPage = true }) {
   const [selectedTab, setSelectedTab] = useState<number | string | null>(0);
   const mobileStudies = AppStudies.filter(study => study.isMobile);
   const webStudies = AppStudies.filter(study => !study.isMobile);
@@ -45,12 +45,24 @@ export function CaseStudy({ showLinkedin = true }) {
                 <AppStudy key={study.title} title={study.title} description={study.description} image={study.image} />
               ))
             )}
+
+            {AppStudies.length === 0 && (
+              <div>
+                <p>No web studies</p>
+              </div>
+            )}
           </TabPanel>
           <TabPanel value={1} className="bg-zinc-200 py-10 md:px-10">
             {mobileStudies.length > 0 && (
               mobileStudies.map(study => (
                 <AppStudy key={study.title} title={study.title} description={study.description} image={study.image} />
               ))
+            )}
+
+            {mobileStudies.length === 0 && (
+              <div>
+                <p>No web studies</p>
+              </div>
             )}
           </TabPanel>
           <TabPanel value={2} className="bg-zinc-200 py-10 md:px-10">
@@ -59,11 +71,17 @@ export function CaseStudy({ showLinkedin = true }) {
                 <AppStudy key={study.title} title={study.title} description={study.description} image={study.image} />
               ))
             )}
+
+            {webStudies.length === 0 && (
+              <div className="flex justify-center">
+                <p>No web designs</p>
+              </div>
+            )}
           </TabPanel>
         </div>
       </Tabs >
 
-      {showLinkedin && (
+      {isPage && (
         <div className="container px-6 md:mx-auto">
           <div className="mt-24 mb-12 text-xl">
             Follow me <LinkedIn url={linkedInUrl} />
