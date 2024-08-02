@@ -1,10 +1,23 @@
-import { motion } from "framer-motion";
-import { fadeInVariant } from "../shared/animations/fade-in.variant";
+import { motion } from 'framer-motion';
+import { fadeInVariant } from '../shared/animations/fade-in.variant';
+import { Highlight } from '../shared/components/Highlight';
+import { TitleAndDescription } from '../shared/components/TitleAndDescription';
+
+const motionProps = {
+  initial: 'offscreen',
+  whileInView: 'onscreen',
+  viewport: { once: true, amount: 0.5 },
+  variants: fadeInVariant
+}
 
 export function About() {
 
   return (
-    <article className="container mx-auto mt-36">
+    <motion.article
+      className="container mx-auto mt-36"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { type: "spring", duration: 3 } }}
+    >
       <div className="about-me flex justify-center">
         <span className="text-5xl font-bold">
           Get to know <span className="text-fuchsia-900">ME</span>
@@ -14,21 +27,21 @@ export function About() {
       {/* Avatar here */}
       <div className="flex flex-col text-xl font-medium">
         <div className="hidden lg:block mt-36 text-center mb-12">
-          They call me "<span className="text-fuchsia-900 font-bold">CHAS</span>"
+          <Highlight text='They call me "CHAS"' highlight="CHAS" />
         </div>
         <div className="flex justify-center">
           <div className="hidden lg:flex flex-col justify-between mr-12 w-72 text-right ">
             <div className="relative start-16">
-              I'm <span className="text-fuchsia-900 font-bold">4'1</span>
+              <Highlight text="I'm 4'1" highlight="4'1" />
             </div>
             <div>
-              I have a <span className="text-fuchsia-900 font-bold">twin</span> brother
+              <Highlight text="I have a twin brother" highlight="twin" />
             </div>
             <div>
-              I'm <span className="text-fuchsia-900 font-bold">keen</span> to details
+              <Highlight text="I'm keen to details" highlight="keen" />
             </div>
             <div className="relative start-16">
-              <span className="text-fuchsia-900 font-bold">Matcha</span> drink addict
+              <Highlight text="Matcha drink addict" highlight="Matcha" />
             </div>
           </div>
           <div className="mt-24 bg-sky-500 rounded-full md:hidden">
@@ -39,33 +52,33 @@ export function About() {
           </div>
           <div className="hidden lg:flex flex-col justify-between ml-12 w-72">
             <div className="relative end-16">
-              I live in Cebu, <span className="text-fuchsia-900 font-bold">Philippines</span>
+              <Highlight text="I live in Cebu, Philippines" highlight="Philippines" />
             </div>
             <div>
-              I'm a <span className="text-fuchsia-900 font-bold">Career Shifter</span>
+              <Highlight text="I'm a Career Shifter" highlight="Career Shifter" />
             </div>
             <div>
-              You can catch me <span className="text-fuchsia-900 font-bold">playing</span> mobile games
+              <Highlight text="You can catch me playing mobile games" highlight="playing" />
             </div>
             <div className="relative end-16">
-              "<span className="text-fuchsia-900 font-bold">Service</span>" is my love language
+              <Highlight text='"Service" is my love language' highlight="Service" />
             </div>
           </div>
         </div>
         <div className="hidden lg:block mb-36 text-center mt-12">
-          I prefer <span className="text-fuchsia-900 font-bold">quite</span> places
+          <Highlight text="I prefer quite places" highlight="quite" />
         </div>
 
         <div className="text-center mt-12 lg:hidden">
-          <div className="my-3">They call me "<span className="text-fuchsia-900 font-bold">CHAS</span>"</div>
-          <div className="my-3">I'm <span className="text-fuchsia-900 font-bold">4'1</span></div>
-          <div className="my-3">I have a <span className="text-fuchsia-900 font-bold">twin</span> brother</div>
-          <div className="my-3">I'm <span className="text-fuchsia-900 font-bold">keen</span> to details</div>
-          <div className="my-3"><span className="text-fuchsia-900 font-bold">Matcha</span> drink addict</div>
-          <div className="my-3">I live in Cebu, <span className="text-fuchsia-900 font-bold">Philippines</span></div>
-          <div className="my-3">I'm a <span className="text-fuchsia-900 font-bold">Career Shifter</span></div>
-          <div className="my-3">You can catch me <span className="text-fuchsia-900 font-bold">playing</span> mobile games</div>
-          <div className="my-3">"<span className="text-fuchsia-900 font-bold">Service</span>" is my love language</div>
+          <div className="my-3"><Highlight text='They call me "CHAS"' highlight="CHAS" /></div>
+          <div className="my-3"><Highlight text="I'm 4'1" highlight="4'1" /></div>
+          <div className="my-3"><Highlight text="I have a twin brother" highlight="twin" /></div>
+          <div className="my-3"><Highlight text="I'm keen to details" highlight="keen" /></div>
+          <div className="my-3"><Highlight text="Matcha drink addict" highlight="Matcha" /></div>
+          <div className="my-3"><Highlight text="I live in Cebu, Philippines" highlight="Philippines" /></div>
+          <div className="my-3"><Highlight text="I'm a Career Shifter" highlight="Career Shifter" /></div>
+          <div className="my-3"><Highlight text="You can catch me playing mobile games" highlight="playing" /></div>
+          <div className="my-3"><Highlight text='"Service" is my love language' highlight="Service" /></div>
         </div>
       </div>
 
@@ -78,44 +91,22 @@ export function About() {
       </div>
 
       <div className="grid grid-rows-3 md:grid-rows-none md:grid-cols-2 lg:grid-cols-3 gap-12 xl:gap-24 mb-12">
-        <motion.div
-          className="bg-fuchsia-50 p-14 rounded-3xl mx-5 md:mx-0"
-          custom={1}
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={fadeInVariant}
-        >
-          <div className="font-bold mb-12">Reliability & Responsibility</div>
-          <div className="font-medium">
-            Ensuring deadlines are met and outcomes owned. I'm not just a partnet; Im your go-to ally for achieving excellence in every endeavor.
-          </div>
+        <motion.div className="bg-fuchsia-50 p-14 rounded-3xl mx-5 md:mx-0" custom={1} {...motionProps}>
+          <TitleAndDescription
+            title="Reliability & Responsibility"
+            description="Ensuring deadlines are met and outcomes owned. I'm not just a partnet; Im your go-to ally for achieving excellence in every endeavor." />
         </motion.div>
 
-        <motion.div
-          className="bg-fuchsia-50 p-14 rounded-3xl mx-5 md:mx-0"
-          custom={2}
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={fadeInVariant}>
-          <div className="font-bold mb-12">Leadership</div>
-          <div className="font-medium">
-            Goes beyond the ordinary. Every decision and action is direccted towards securing success for both of us.
-          </div>
+        <motion.div className="bg-fuchsia-50 p-14 rounded-3xl mx-5 md:mx-0" custom={2} {...motionProps}>
+          <TitleAndDescription
+            title="Leadership"
+            description="Goes beyond the ordinary. Every decision and action is direccted towards securing success for both of us." />
         </motion.div>
 
-        <motion.div
-          className="bg-fuchsia-50 p-14 rounded-3xl mx-5 md:mx-0"
-          custom={3}
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={fadeInVariant}>
-          <div className="font-bold mb-12">Professionalism</div>
-          <div className="font-medium">
-            Where respect and integrity thrive. Let's build a professional relationship, and a positive attitude are the keys to our shared success.
-          </div>
+        <motion.div className="bg-fuchsia-50 p-14 rounded-3xl mx-5 md:mx-0" custom={3} {...motionProps}>
+          <TitleAndDescription
+            title="Professionalism"
+            description="Where respect and integrity thrive. Let's build a professional relationship, and a positive attitude are the keys to our shared success." />
         </motion.div>
       </div>
 
@@ -124,13 +115,7 @@ export function About() {
       </div>
 
       <div className="mb-24">
-        <motion.div
-          className="grid grid-rows-1 md:grid-cols-2 flex justify-center"
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={fadeInVariant}
-        >
+        <motion.div className="grid grid-rows-1 md:grid-cols-2 flex justify-center" {...motionProps}>
           <div className="flex justify-center">
             <img
               src="https://placehold.co/300x450"
@@ -138,19 +123,13 @@ export function About() {
               className="origin-bottom -rotate-3 rounded-3xl" />
           </div>
           <div className="flex justify-center text-xl font-medium self-center text-center md:text-left mt-16 md:mt-0 mb-24">
-            <div className="w-72 ">
-              I was honored as one of the <span className="text-fuchsia-900 font-bold">top team leaders</span>
+            <div className="w-72">
+              <Highlight text="I was honored as one of the top team leader" highlight="top team leader" />
             </div>
           </div>
         </motion.div>
 
-        <motion.div
-          className="grid grid-rows-1 md:grid-cols-2 flex justify-center mt-24"
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={fadeInVariant}
-        >
+        <motion.div className="grid grid-rows-1 md:grid-cols-2 flex justify-center mt-24" {...motionProps}>
           <div className="flex justify-center md:order-last">
             <img
               src="https://placehold.co/300x450"
@@ -159,18 +138,12 @@ export function About() {
           </div>
           <div className="md:order-first flex justify-center text-xl font-medium self-center text-center mt-16  md:text-left mb-24">
             <div className="w-72 md:w-80">
-              I achieved recognition as the <span className="text-fuchsia-900 font-bold">Team Lead of the Quarter</span>
+              <Highlight text="I achieved recognition as the Team Lead of the Quarter" highlight="Team Lead of the Quarter" />
             </div>
           </div>
         </motion.div>
 
-        <motion.div
-          className="grid grid-rows-1 md:grid-cols-2 flex justify-center mt-24"
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={fadeInVariant}
-        >
+        <motion.div className="grid grid-rows-1 md:grid-cols-2 flex justify-center mt-24" {...motionProps}>
           <div className="flex justify-center">
             <img
               src="https://placehold.co/300x450"
@@ -180,16 +153,18 @@ export function About() {
 
           <div className="flex justify-center text-xl font-medium self-center md:text-left mt-16 md:mt-0 mb-24">
             <div className="w-72 md:w-96">
-              I received an award for being <span className="text-fuchsia-900 font-bold">the best agent overall</span>
-              , achieving our goals, and maintaining a perfect 100% quality score consistently. Prior to being a team leader.
+              <Highlight
+                text="I received an award for being the best agent overall, achieving our goals, and maintaining a perfect 100% quality score consistently. Prior to being a team leader."
+                highlight="the best agent overall" />
             </div>
           </div>
         </motion.div>
       </div>
 
-      <div className="flex justify-center text-3xl mt-6 mt-80 mb-24">
-        View My <span className="text-fuchsia-900 font-bold ml-2">RESUME here.</span>
+      <div className="flex justify-center text-3xl mt-6 mt-56 mb-24">
+        {/* To provide resume link */}
+        View My <a className="text-fuchsia-900 font-bold ml-2" href="#">RESUME here.</a>
       </div>
-    </article>
+    </motion.article>
   );
 }

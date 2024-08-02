@@ -10,8 +10,10 @@ import { motion } from 'framer-motion';
 export function Home() {
   const otherContent = useRef<HTMLElement | null>(null);
   const [isOtherContentReady, setIsOtherContentReady] = useState(false);
-  const el = useRef(null);
+  const typingLetterRef = useRef(null);
+  const linkedInUrl = 'https://www.linkedin.com/in/charcae-donaire-26b7a0183/';
 
+  // Sets the Div for Portal use
   useEffect(() => {
     if (!otherContent.current) {
       const element = document.getElementById('otherContent');
@@ -22,8 +24,9 @@ export function Home() {
     }
   }, []);
 
+  // For typing letter animation
   useEffect(() => {
-    const typed = new Typed(el.current, {
+    const typed = new Typed(typingLetterRef.current, {
       strings: ['simple', 'elegant', 'fast'],
       typeSpeed: 120,
       loop: true,
@@ -52,7 +55,7 @@ export function Home() {
         </div>
 
         <h1 className="text-4xl md:text-7xl font-bold mt-16">
-          I design <span ref={el} className="text-fuchsia-900">simple.</span>
+          I design <span ref={typingLetterRef} className="text-fuchsia-900">simple.</span>
         </h1>
 
         <Button className="bg-fuchsia-900 text-white px-5 md:px-10 py-3 font-bold text-sm md:text-xl rounded-full mt-32">
@@ -60,7 +63,7 @@ export function Home() {
         </Button>
 
         <div className="mt-64 text-xl py-6">
-          Follow me <LinkedIn href="https://www.linkedin.com/in/charcae-donaire-26b7a0183/" />
+          Follow me <LinkedIn url={linkedInUrl} />
         </div>
       </div>
       {isOtherContentReady && (

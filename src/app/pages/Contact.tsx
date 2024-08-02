@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 export function Contact({ showLinkedin = true }) {
   const [form, setForm] = useState({ email: '', name: '', message: '' });
+  const linkedInUrl = 'https://www.linkedin.com/in/charcae-donaire-26b7a0183/';
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ export function Contact({ showLinkedin = true }) {
       body: new URLSearchParams(formData as any).toString(),
     })
       .then(() => {
-        alert("Thank you for your submission");
+        alert('Thank you for your submission');
         setForm({
           email: '',
           name: '',
@@ -117,7 +118,7 @@ export function Contact({ showLinkedin = true }) {
       {showLinkedin && (
         <div className="container mx-auto">
           <div className="mt-24 mb-12 text-xl">
-            Follow me <LinkedIn href="https://www.linkedin.com/in/charcae-donaire-26b7a0183/" />
+            Follow me <LinkedIn url={linkedInUrl} />
           </div>
         </div>
       )}

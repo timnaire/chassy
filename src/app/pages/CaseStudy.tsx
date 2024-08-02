@@ -3,11 +3,13 @@ import { Tab, TabPanel, Tabs, TabsList } from '@mui/base';
 import { AppStudy } from '../shared/components/AppStudy';
 import { AppStudies } from '../core/models/constants';
 import { LinkedIn } from '../shared/components/LinkedIn';
+import { motion } from 'framer-motion';
 
 export function CaseStudy({ showLinkedin = true }) {
   const [selectedTab, setSelectedTab] = useState<number | string | null>(0);
   const mobileStudies = AppStudies.filter(study => study.isMobile);
   const webStudies = AppStudies.filter(study => !study.isMobile);
+  const linkedInUrl = 'https://www.linkedin.com/in/charcae-donaire-26b7a0183/';
 
   const handleTabChange = (value: number | string | null) => {
     setSelectedTab(value);
@@ -18,7 +20,10 @@ export function CaseStudy({ showLinkedin = true }) {
   }
 
   return (
-    <article>
+    <motion.article
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { type: "spring", duration: 3 } }}
+    >
       <div className="container mx-auto">
         <h2 className="flex justify-center mt-16 text-fuchsia-700 text-2xl sm:text-3xl md:text-4xl font-medium">
           Case Studies
@@ -61,11 +66,11 @@ export function CaseStudy({ showLinkedin = true }) {
       {showLinkedin && (
         <div className="container px-6 md:mx-auto">
           <div className="mt-24 mb-12 text-xl">
-            Follow me <LinkedIn href="https://www.linkedin.com/in/charcae-donaire-26b7a0183/" />
+            Follow me <LinkedIn url={linkedInUrl} />
           </div>
         </div>
       )}
-    </article>
+    </motion.article>
   );
 }
 
