@@ -19,7 +19,7 @@ export function BaseLayout() {
             <Outlet />
           </main>
         </div>
-        <div id="otherContent"></div>
+        <div id="otherContent" className="z-[1000]"></div>
       </motion.div>
       <Footer />
     </>

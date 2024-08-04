@@ -22,7 +22,7 @@ export function CaseStudy({ isPage = true }) {
   return (
     <motion.article
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { type: "spring", duration: 3 } }}
+      animate={{ opacity: 1, transition: { type: 'spring', duration: 3 } }}
     >
       <div className="container mx-auto">
         <h2 className="flex justify-center mt-16 text-fuchsia-700 text-2xl sm:text-3xl md:text-4xl font-medium">

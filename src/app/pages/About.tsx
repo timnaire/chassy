@@ -22,7 +22,7 @@ export function About() {
     <motion.article
       className="container mx-auto mt-36"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { type: "spring", duration: 3 } }}
+      animate={{ opacity: 1, transition: { type: 'spring', duration: 3 } }}
     >
       <div className="about-me flex justify-center">
         <span className="text-5xl font-bold">

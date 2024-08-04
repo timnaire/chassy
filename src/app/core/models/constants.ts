@@ -1,5 +1,4 @@
-
-const apprise = require('./../../../assets/images/hero.png');
+const apprise = require('./../../../assets/images/app_1.png')
 
 export const AppStudies = [
   {

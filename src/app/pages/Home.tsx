@@ -43,7 +43,7 @@ export function Home() {
     <motion.article
       className="relative container mx-auto px-5 md:px-0"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { type: "spring", duration: 3 } }}
+      animate={{ opacity: 1, transition: { type: 'spring', duration: 3 } }}
     >
       <div className="grid grid-cols-none md:grid-cols-2">
         <div>

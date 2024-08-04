@@ -28,7 +28,7 @@ export function AppStudy({ title, description, image }: AppStudyProps) {
             </Button>
           </div>
           <div className="flex justify-center self-center h-full order-first md:order-last">
-            <img className="rounded-lg" src={image} alt={title} />
+            <img className="rounded-lg"src={image} alt={title} loading="lazy" />
           </div>
         </div>
       </div>

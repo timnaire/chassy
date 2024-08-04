@@ -12,7 +12,7 @@ export function Footer() {
               </NavLink>
             </li>
             <li className="md:px-5 py-6">
-              <NavLink className="md:text-md lg:text-2xl" to={`/about`}>
+              <NavLink className="md:text-md lg:text-2xl" to={`/case-studies`}>
                 Case Studies
               </NavLink>
             </li>

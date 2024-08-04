@@ -39,7 +39,7 @@ export function Contact({ isPage = true }) {
     <motion.article
       className={isPage ? "container mx-auto px-10 py-16 md:mt-72" : "container mx-auto px-10 py-16"}
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { type: "spring", duration: 3 } }}
+      animate={{ opacity: 1, transition: { type: 'spring', duration: 3 } }}
     >
       <div className="flex flex-col md:flex-row">
         <div className="flex-1">
