@@ -1,7 +1,16 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInVariant } from '../shared/animations/fade-in.variant';
 import { Highlight } from '../shared/components/Highlight';
 import { TitleAndDescription } from '../shared/components/TitleAndDescription';
+import { Breakpoints } from '../core/models/constants';
+import MyPic from './../../assets/images/MyPic.png';
+import GetToKnowMe from './../../assets/images/get-to-know-me.png';
+import NotebookLaptop from './../../assets/images/notebook_laptop.png';
+import WorkRecogniation1 from './../../assets/images/image_1.png';
+import WorkRecogniation2 from './../../assets/images/image_2.png';
+import WorkRecogniation3 from './../../assets/images/image_3.png';
+import MyResume from './../../assets/pdf/Charcae_Donaire_Resume.pdf';
 
 const motionProps = {
   initial: 'offscreen',
@@ -11,12 +20,29 @@ const motionProps = {
 }
 
 export function About() {
-  const profile = require('./../../assets/images/MyPic.png');
-  const notebookLaptop = require('./../../assets/images/notebook_laptop.png');
+  const [isMobile, setIsMobile] = useState(false);
+  const wrWidth = isMobile ? 350 : 500;
+  const wrHeight = isMobile ? 450 : 650;
 
-  const image1 = require('./../../assets/images/image_1.png');
-  const image2 = require('./../../assets/images/image_2.png');
-  const image3 = require('./../../assets/images/image_3.png');
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= Breakpoints.SM) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    }
+
+    // Initial check
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
 
   return (
     <motion.article
@@ -25,9 +51,10 @@ export function About() {
       animate={{ opacity: 1, transition: { type: 'spring', duration: 3 } }}
     >
       <div className="about-me flex justify-center">
-        <span className="text-5xl font-bold">
+        {/* <span className="text-5xl font-bold">
           Get to know <span className="text-fuchsia-900">ME</span>
-        </span>
+        </span> */}
+        <img src={GetToKnowMe} alt="Get to know me" />
       </div>
 
       {/* Avatar here */}
@@ -51,10 +78,10 @@ export function About() {
             </div>
           </div>
           <div className="mt-24 bg-fuchsia-500 rounded-full md:hidden">
-            <img src={profile} height={250} width={250} alt="profile-avatar" className="rounded-full" />
+            <img src={MyPic} height={250} width={250} alt="profile-avatar" className="rounded-full" />
           </div>
           <div className="mt-24 lg:my-0 bg-fuchsia-500 rounded-full hidden md:flex">
-            <img src={profile} height={400} width={400} alt="profile-avatar" className="rounded-full" />
+            <img src={MyPic} height={400} width={400} alt="profile-avatar" className="rounded-full" />
           </div>
           <div className="hidden lg:flex flex-col justify-between ml-12 w-72">
             <div className="relative end-16">
@@ -118,7 +145,7 @@ export function About() {
 
 
       <motion.div className="flex justify-center" {...motionProps}>
-        <img src={notebookLaptop} height={600} width={750} alt="notebook-laptop" loading="lazy" />
+        <img src={NotebookLaptop} height={600} width={750} alt="notebook-laptop" loading="lazy" />
       </motion.div >
 
       <div className="flex flex-col items-center md:flex-row text-4xl font-bold mt-12 mb-24">
@@ -129,9 +156,9 @@ export function About() {
         <motion.div className="grid grid-rows-1 md:grid-cols-2 flex justify-center" {...motionProps}>
           <div className="flex justify-center">
             <img
-              src={image1}
-              height={650}
-              width={500}
+              src={WorkRecogniation1}
+              height={wrHeight}
+              width={wrWidth}
               alt="work-recognition-1"
               loading="lazy"
               className="origin-bottom -rotate-3 rounded-3xl" />
@@ -146,12 +173,12 @@ export function About() {
         <motion.div className="grid grid-rows-1 md:grid-cols-2 flex justify-center mt-24" {...motionProps}>
           <div className="flex justify-center md:order-last">
             <img
-              src={image2}
-              height={650}
-              width={500}
+              src={WorkRecogniation2}
+              height={wrHeight}
+              width={wrWidth}
               alt="work-recognition-2"
               loading="lazy"
-              className="origin-bottom rotate-3 rounded-3xl order-1" />
+              className="rotate-3 rounded-3xl order-1" />
           </div>
           <div className="md:order-first flex justify-center text-xl font-medium self-center text-center mt-16  md:text-left mb-24">
             <div className="w-72 md:w-80">
@@ -163,9 +190,9 @@ export function About() {
         <motion.div className="grid grid-rows-1 md:grid-cols-2 flex justify-center mt-24" {...motionProps}>
           <div className="flex justify-center">
             <img
-              src={image3}
-              height={650}
-              width={500}
+              src={WorkRecogniation3}
+              height={wrHeight}
+              width={wrWidth}
               alt="work-recognition-3"
               loading="lazy"
               className="origin-bottom -rotate-3 rounded-3xl" />
@@ -181,9 +208,14 @@ export function About() {
         </motion.div>
       </div>
 
-      <div className="flex justify-center text-3xl mt-6 mt-56 mb-24">
+      <div className="flex justify-center text-xl sm:text-3xl mt-6 mt-56 mb-24">
         {/* To provide resume link */}
-        View My <span className="text-fuchsia-900 font-bold ml-2">RESUME here.</span>
+        View My
+        <a
+          className="text-fuchsia-900 font-bold ml-2"
+          href={MyResume} target='_blank' rel='noopener noreferrer'>
+          RESUME here.
+        </a>
       </div>
     </motion.article>
   );

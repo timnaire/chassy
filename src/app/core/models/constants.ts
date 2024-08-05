@@ -1,10 +1,10 @@
-const apprise = require('./../../../assets/images/app_1.png')
+import Apprise from './../../../assets/images/app_1.png';
 
 export const AppStudies = [
   {
     title: 'Apprise',
     description: 'To Keep users updated with the latest trends and updates in any area of interest',
-    image: apprise,
+    image: Apprise,
     isMobile: true
   },
   // {
@@ -20,3 +20,11 @@ export const AppStudies = [
   //   isMobile: false
   // },
 ];
+
+export enum Breakpoints {
+  SM = 640,
+  MD = 768,
+  LG = 1024,
+  XL = 1280,
+  XXL = 1536
+}

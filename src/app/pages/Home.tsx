@@ -6,13 +6,13 @@ import { Contact } from './Contact';
 import { LinkedIn } from '../shared/components/LinkedIn';
 import { motion } from 'framer-motion';
 import Typed from 'typed.js';
+// import Hero from './../../assets/images/hero.png'
 
 export function Home() {
   const otherContent = useRef<HTMLElement | null>(null);
   const [isOtherContentReady, setIsOtherContentReady] = useState(false);
   const typingLetterRef = useRef(null);
   const linkedInUrl = 'https://www.linkedin.com/in/charcae-donaire-26b7a0183/';
-  // const hero = require('./../../assets/images/hero.png');
 
   // Sets the Div for Portal use
   useEffect(() => {
@@ -75,7 +75,7 @@ export function Home() {
             // animate={{ translateX: 400, translateY: -500 }}
             transition={{ repeat: Infinity, duration: 2 }}
           >
-            <img src={hero} width={450} alt="hero"/>
+            <img src={Hero} width={450} alt="hero"/>
           </motion.div>
           <motion.div
             className="flex justify-center"
@@ -83,7 +83,7 @@ export function Home() {
             // animate={{ translateX: 400, translateY: -500 }}
             transition={{ repeat: Infinity, duration: 2 }}
           >
-            <img src={hero} width={450} alt="hero"/>
+            <img src={Hero} width={450} alt="hero"/>
           </motion.div>
           <motion.div
             className="flex"
@@ -91,7 +91,7 @@ export function Home() {
             // animate={{ translateX: 400, translateY: -500 }}
             transition={{ repeat: Infinity, duration: 2 }}
           >
-            <img src={hero} width={450} alt="hero"/>
+            <img src={Hero} width={450} alt="hero"/>
           </motion.div>
         </div> */}
       </div>
