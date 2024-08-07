@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInVariant } from '../shared/animations/fade-in.variant';
 import { Highlight } from '../shared/components/Highlight';
 import { TitleAndDescription } from '../shared/components/TitleAndDescription';
 import { Breakpoints } from '../core/models/constants';
+import { useIsMobile } from '../shared/hooks/useIsMobile';
 import MyPic from './../../assets/images/MyPic.png';
-import GetToKnowMe from './../../assets/images/get-to-know-me.png';
+import GetToKnowMe from './../../assets/images/get_to_know_me.png';
 import NotebookLaptop from './../../assets/images/notebook_laptop.png';
 import WorkRecogniation1 from './../../assets/images/image_1.png';
 import WorkRecogniation2 from './../../assets/images/image_2.png';
@@ -16,33 +16,18 @@ const motionProps = {
   initial: 'offscreen',
   whileInView: 'onscreen',
   viewport: { once: true, amount: 0.5 },
-  variants: fadeInVariant
-}
+  variants: fadeInVariant,
+};
 
 export function About() {
-  const [isMobile, setIsMobile] = useState(false);
+  const { isMobile } = useIsMobile({ breakpoint: Breakpoints.SM });
   const wrWidth = isMobile ? 350 : 500;
   const wrHeight = isMobile ? 450 : 650;
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= Breakpoints.SM) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    }
-
-    // Initial check
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    }
-  }, []);
-
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
 
   return (
     <motion.article
@@ -103,15 +88,33 @@ export function About() {
         </div>
 
         <div className="text-center mt-12 lg:hidden">
-          <div className="my-3"><Highlight text='They call me "CHAS"' highlight="CHAS" /></div>
-          <div className="my-3"><Highlight text="I'm 4'1" highlight="4'1" /></div>
-          <div className="my-3"><Highlight text="I have a twin brother" highlight="twin" /></div>
-          <div className="my-3"><Highlight text="I'm keen to details" highlight="keen" /></div>
-          <div className="my-3"><Highlight text="Matcha drink addict" highlight="Matcha" /></div>
-          <div className="my-3"><Highlight text="I live in Cebu, Philippines" highlight="Philippines" /></div>
-          <div className="my-3"><Highlight text="I'm a Career Shifter" highlight="Career Shifter" /></div>
-          <div className="my-3"><Highlight text="You can catch me playing mobile games" highlight="playing" /></div>
-          <div className="my-3"><Highlight text='"Service" is my love language' highlight="Service" /></div>
+          <div className="my-3">
+            <Highlight text='They call me "CHAS"' highlight="CHAS" />
+          </div>
+          <div className="my-3">
+            <Highlight text="I'm 4'1" highlight="4'1" />
+          </div>
+          <div className="my-3">
+            <Highlight text="I have a twin brother" highlight="twin" />
+          </div>
+          <div className="my-3">
+            <Highlight text="I'm keen to details" highlight="keen" />
+          </div>
+          <div className="my-3">
+            <Highlight text="Matcha drink addict" highlight="Matcha" />
+          </div>
+          <div className="my-3">
+            <Highlight text="I live in Cebu, Philippines" highlight="Philippines" />
+          </div>
+          <div className="my-3">
+            <Highlight text="I'm a Career Shifter" highlight="Career Shifter" />
+          </div>
+          <div className="my-3">
+            <Highlight text="You can catch me playing mobile games" highlight="playing" />
+          </div>
+          <div className="my-3">
+            <Highlight text='"Service" is my love language' highlight="Service" />
+          </div>
         </div>
       </div>
 
@@ -127,26 +130,28 @@ export function About() {
         <motion.div className="bg-fuchsia-50 p-14 rounded-3xl mx-5 md:mx-0" custom={1} {...motionProps}>
           <TitleAndDescription
             title="Reliability & Responsibility"
-            description="Ensuring deadlines are met and outcomes owned. I'm not just a partnet; Im your go-to ally for achieving excellence in every endeavor." />
+            description="Ensuring deadlines are met and outcomes owned. I'm not just a partnet; Im your go-to ally for achieving excellence in every endeavor."
+          />
         </motion.div>
 
         <motion.div className="bg-fuchsia-50 p-14 rounded-3xl mx-5 md:mx-0" custom={2} {...motionProps}>
           <TitleAndDescription
             title="Leadership"
-            description="Goes beyond the ordinary. Every decision and action is direccted towards securing success for both of us." />
+            description="Goes beyond the ordinary. Every decision and action is direccted towards securing success for both of us."
+          />
         </motion.div>
 
         <motion.div className="bg-fuchsia-50 p-14 rounded-3xl mx-5 md:mx-0" custom={3} {...motionProps}>
           <TitleAndDescription
             title="Professionalism"
-            description="Where respect and integrity thrive. Let's build a professional relationship, and a positive attitude are the keys to our shared success." />
+            description="Where respect and integrity thrive. Let's build a professional relationship, and a positive attitude are the keys to our shared success."
+          />
         </motion.div>
       </div>
 
-
       <motion.div className="flex justify-center" {...motionProps}>
         <img src={NotebookLaptop} height={600} width={750} alt="notebook-laptop" loading="lazy" />
-      </motion.div >
+      </motion.div>
 
       <div className="flex flex-col items-center md:flex-row text-4xl font-bold mt-12 mb-24">
         Work <span className="text-5xl text-fuchsia-900 font-bold ml-2">Recognition</span>
@@ -161,7 +166,8 @@ export function About() {
               width={wrWidth}
               alt="work-recognition-1"
               loading="lazy"
-              className="origin-bottom -rotate-3 rounded-3xl" />
+              className="origin-bottom -rotate-3 rounded-3xl"
+            />
           </div>
           <div className="flex justify-center text-xl font-medium self-center text-center md:text-left mt-16 md:mt-0 mb-24">
             <div className="w-72">
@@ -178,11 +184,15 @@ export function About() {
               width={wrWidth}
               alt="work-recognition-2"
               loading="lazy"
-              className="rotate-3 rounded-3xl order-1" />
+              className="rotate-3 rounded-3xl order-1"
+            />
           </div>
           <div className="md:order-first flex justify-center text-xl font-medium self-center text-center mt-16  md:text-left mb-24">
             <div className="w-72 md:w-80">
-              <Highlight text="I achieved recognition as the Team Lead of the Quarter" highlight="Team Lead of the Quarter" />
+              <Highlight
+                text="I achieved recognition as the Team Lead of the Quarter"
+                highlight="Team Lead of the Quarter"
+              />
             </div>
           </div>
         </motion.div>
@@ -195,14 +205,16 @@ export function About() {
               width={wrWidth}
               alt="work-recognition-3"
               loading="lazy"
-              className="origin-bottom -rotate-3 rounded-3xl" />
+              className="origin-bottom -rotate-3 rounded-3xl"
+            />
           </div>
 
           <div className="flex justify-center text-xl font-medium self-center md:text-left mt-16 md:mt-0 mb-24">
             <div className="w-72 md:w-96">
               <Highlight
                 text="I received an award for being the best agent overall, achieving our goals, and maintaining a perfect 100% quality score consistently. Prior to being a team leader."
-                highlight="the best agent overall" />
+                highlight="the best agent overall"
+              />
             </div>
           </div>
         </motion.div>
@@ -211,9 +223,7 @@ export function About() {
       <div className="flex justify-center text-xl sm:text-3xl mt-6 mt-56 mb-24">
         {/* To provide resume link */}
         View My
-        <a
-          className="text-fuchsia-900 font-bold ml-2"
-          href={MyResume} target='_blank' rel='noopener noreferrer'>
+        <a className="text-fuchsia-900 font-bold ml-2" href={MyResume} target="_blank" rel="noopener noreferrer">
           RESUME here.
         </a>
       </div>

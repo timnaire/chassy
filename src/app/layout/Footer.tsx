@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 export function Footer() {
   return (
@@ -22,9 +22,7 @@ export function Footer() {
               </NavLink>
             </li>
           </ul>
-          <div className="flex self-center">
-            © 2023 CharcaeDesign. All rights reserved.
-          </div>
+          <div className="flex self-center text-center">© 2024 CharcaeDesign. All rights reserved.</div>
         </div>
       </div>
     </footer>

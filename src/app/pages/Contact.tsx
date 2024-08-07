@@ -25,31 +25,43 @@ export function Contact({ isPage = true }) {
         setForm({
           email: '',
           name: '',
-          message: ''
+          message: '',
         });
       })
       .catch((error) => alert(error));
-  }
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((prev) => { return { ...prev, [e.target.name]: e.target.value } });
+    setForm((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
+  if (isPage) {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }
 
   return (
     <motion.article
-      className={isPage ? "container mx-auto px-10 py-16 md:mt-72" : "container mx-auto px-10 py-16"}
+      className={
+        isPage ? 'container mx-auto p-3 md:px-10 md:py-16 md:mt-72' : 'container mx-auto p-3 md:px-10 md:py-16'
+      }
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { type: 'spring', duration: 3 } }}
     >
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row overflow-x-auto">
         <div className="flex-1">
-          <div className="text-fuchsia-700 text-2xl sm:text-3xl md:text-4xl font-bold mb-3">
-            Let's get <br />in touch.
+          <div className="text-fuchsia-700 text-xl sm:text-3xl md:text-4xl font-bold mb-3">
+            Let's get <br />
+            in touch.
           </div>
-          <div className="text-xl font-medium">
+          <div className="text-md font-medium">
             Do you have an idea for something you want to <br /> create or a project you want to talk about?
           </div>
-          <div className="text-xl font-medium mt-16">
+          <div className="text-md font-medium mt-16">
             You can reach out by emailing
             <div className="text-fuchsia-700 underline">
               <a href="mailto:charcaedonaire@outlook.com"> charcaedonaire@gmail.com</a>
@@ -60,10 +72,16 @@ export function Contact({ isPage = true }) {
         <div className="flex-none self-center text-2xl px-12 py-6">or</div>
 
         <div className="md:flex flex-1 md:justify-end font-normal">
-          <form noValidate autoComplete="off" name="contact" onSubmit={(e) => handleSubmit(e)} className="md:w-11/12 lg:w-10/12" method="POST" data-netlify="true">
-            <div className="text-xl font-medium mb-10">
-              Drop me a message, and we can have a chat!
-            </div>
+          <form
+            noValidate
+            autoComplete="off"
+            name="contact"
+            onSubmit={(e) => handleSubmit(e)}
+            className="md:w-11/12 lg:w-10/12"
+            method="POST"
+            data-netlify="true"
+          >
+            <div className="text-md md:text-xl font-medium mb-10">Drop me a message, and we can have a chat!</div>
             <input type="hidden" name="form-name" value="contact" />
             <div className="mt-6">
               <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
@@ -108,7 +126,10 @@ export function Contact({ isPage = true }) {
               />
             </div>
 
-            <Button type="submit" className="bg-fuchsia-900 text-white px-5 md:px-10 py-3 font-bold text-sm md:text-lg rounded-full mt-12">
+            <Button
+              type="submit"
+              className="bg-fuchsia-900 text-white px-5 md:px-10 py-3 font-bold text-sm md:text-lg rounded-full mt-12"
+            >
               Send Message
             </Button>
           </form>

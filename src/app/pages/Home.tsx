@@ -1,29 +1,19 @@
-
-import { useEffect, useRef, useState } from 'react';
-import { Button, Portal } from '@mui/base';
+import { useEffect, useRef } from 'react';
+import { Button } from '@mui/base';
 import { CaseStudy } from './CaseStudy';
 import { Contact } from './Contact';
 import { LinkedIn } from '../shared/components/LinkedIn';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '../shared/hooks/useIsMobile';
+import { Breakpoints } from '../core/models/constants';
 import Typed from 'typed.js';
-// import Hero from './../../assets/images/hero.png'
+import Hero from './../../assets/images/hero.png';
+import App1 from './../../assets/images/app_1.png';
 
 export function Home() {
-  const otherContent = useRef<HTMLElement | null>(null);
-  const [isOtherContentReady, setIsOtherContentReady] = useState(false);
   const typingLetterRef = useRef(null);
   const linkedInUrl = 'https://www.linkedin.com/in/charcae-donaire-26b7a0183/';
-
-  // Sets the Div for Portal use
-  useEffect(() => {
-    if (!otherContent.current) {
-      const element = document.getElementById('otherContent');
-      if (element) {
-        otherContent.current = element;
-        setIsOtherContentReady(true);
-      }
-    }
-  }, []);
+  const { isMobile } = useIsMobile({ breakpoint: Breakpoints.LG });
 
   // For typing letter animation
   useEffect(() => {
@@ -39,69 +29,74 @@ export function Home() {
     };
   }, []);
 
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+
   return (
-    <motion.article
-      className="relative container mx-auto px-5 md:px-0"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { type: 'spring', duration: 3 } }}
-    >
-      <div className="grid grid-cols-none md:grid-cols-2">
-        <div>
-          <div className="mt-12">
-            <h5 className="text-xl md:text-2xl font-bold">
-              Hi, I'm Chas
-            </h5>
-            <h6 className="text-md md:text-lg">
-              UI / UI Designer | Philippines
-            </h6>
+    <>
+      <motion.div
+        className="bg-gradient-to-r from-white via-white to-fuchsia-100 relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { type: 'spring', duration: 3 } }}
+      >
+        <article className="container mx-auto px-5 md:px-0 overflow-hidden">
+          <div className="relative z-20">
+            <div className="pt-12">
+              <h5 className="text-xl md:text-2xl font-bold">Hi, I'm Chas</h5>
+              <h6 className="text-md md:text-lg">UI / UI Designer | Philippines</h6>
+            </div>
+
+            <h1 className="text-4xl md:text-7xl font-bold mt-16">
+              I design{' '}
+              <span ref={typingLetterRef} className="text-fuchsia-900">
+                simple.
+              </span>
+            </h1>
+
+            <Button className="bg-fuchsia-900 text-white px-5 md:px-10 py-3 font-bold text-sm md:text-xl rounded-full mt-32">
+              Check Case Studies
+            </Button>
+
+            <div className="mt-64 text-xl py-6">
+              Follow me <LinkedIn url={linkedInUrl} />
+            </div>
           </div>
 
-          <h1 className="text-4xl md:text-7xl font-bold mt-16">
-            I design <span ref={typingLetterRef} className="text-fuchsia-900">simple.</span>
-          </h1>
+          {!isMobile &&
+            [0, 1, 2, 3].map((v) => (
+              <motion.img
+                key={v}
+                className="absolute z-10"
+                initial={{ y: 0, x: 510 }}
+                animate={{ y: -1350, x: 1250 }}
+                transition={{ ease: 'linear', repeat: Infinity, duration: 10, delay: 2.5 * v }}
+                src={Hero}
+                alt="hero"
+              ></motion.img>
+            ))}
 
-          <Button className="bg-fuchsia-900 text-white px-5 md:px-10 py-3 font-bold text-sm md:text-xl rounded-full mt-32">
-            Check Case Studies
-          </Button>
+          {isMobile &&
+            [0, 1, 2, 3].map((v) => (
+              <motion.img
+                key={v}
+                className="absolute z-10 bottom-20"
+                initial={{ x: -400 }}
+                animate={{ x: Breakpoints.LG }}
+                transition={{ ease: 'linear', repeat: Infinity, duration: 10, delay: 2.5 * v }}
+                src={App1}
+                width={250}
+                alt="hero"
+              ></motion.img>
+            ))}
+        </article>
+      </motion.div>
 
-          <div className="mt-64 text-xl py-6">
-            Follow me <LinkedIn url={linkedInUrl} />
-          </div>
-        </div>
-        {/* <div>
-          <motion.div
-            className="flex justify-end"
-            // initial={{ translateX: 0, translateY: 0 }}
-            // animate={{ translateX: 400, translateY: -500 }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            <img src={Hero} width={450} alt="hero"/>
-          </motion.div>
-          <motion.div
-            className="flex justify-center"
-            // initial={{ translateX: 0, translateY: 0 }}
-            // animate={{ translateX: 400, translateY: -500 }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            <img src={Hero} width={450} alt="hero"/>
-          </motion.div>
-          <motion.div
-            className="flex"
-            // initial={{ translateX: 0, translateY: 0 }}
-            // animate={{ translateX: 400, translateY: -500 }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            <img src={Hero} width={450} alt="hero"/>
-          </motion.div>
-        </div> */}
+      <div className="bg-white relative z-20">
+        <CaseStudy isPage={false} />
+        <Contact isPage={false} />
       </div>
-      {isOtherContentReady && (
-        <Portal children={<CaseStudy isPage={false} />} container={otherContent.current} />
-      )}
-      {isOtherContentReady && (
-        <Portal children={<Contact isPage={false} />} container={otherContent.current} />
-      )}
-    </motion.article>
+    </>
   );
 }
-
