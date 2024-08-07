@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Button } from '@mui/base';
 import { CaseStudy } from './CaseStudy';
 import { Contact } from './Contact';
 import { LinkedIn } from '../shared/components/LinkedIn';
@@ -55,9 +54,11 @@ export function Home() {
               </span>
             </h1>
 
-            <Button className="bg-fuchsia-900 text-white px-5 md:px-10 py-3 font-bold text-sm md:text-xl rounded-full mt-32">
-              Check Case Studies
-            </Button>
+            <div className="mt-32">
+              <a href="/case-studies" className="bg-fuchsia-900 text-white px-5 md:px-10 py-3 font-bold text-sm md:text-xl rounded-full">
+                Check Case Studies
+              </a>
+            </div>
 
             <div className="mt-64 text-xl py-6">
               Follow me <LinkedIn url={linkedInUrl} />
