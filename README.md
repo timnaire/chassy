@@ -1,3 +1,3 @@
-# Chassy's Portfolio
+# [Chassy's Portfolio](https://chassy.netlify.app/)
 
-Developed and written in React & Tailwind
+Developed and written in React & Tailwind, deployed in Netlify.
